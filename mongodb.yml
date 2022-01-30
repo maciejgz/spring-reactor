@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  stock-mongo-db:
+    image: mongo:latest
+    restart: always
+    container_name: stock-mongo-db
+    volumes:
+      - ~/volumes/blog/mongodb:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: qaz123
+    ports:
+      - "27017:27017"
+    networks:
+      - stock-network
+
+networks:
+  stock-network:
