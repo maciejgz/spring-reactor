@@ -10,5 +10,8 @@
 
     <modules>
         <module>stock-quotes</module>
+        <module>stock-details</module>
+        <module>trading-service</module>
+        <module>thread-pool-tests</module>
     </modules>
 </project>
