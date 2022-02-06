@@ -9,6 +9,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Component
@@ -38,11 +39,12 @@ public class Starter implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Executor executors = Executors.newFixedThreadPool(40);
+        ExecutorService executors = Executors.newFixedThreadPool(40);
 
         for (int i = 0; i < 50; i++) {
             int w = i;
             executors.execute(() -> job.runJob(w));
         }
+        executors.shutdown();
     }
 }
